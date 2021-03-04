@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html></html>
+<head>
+    <title>Frogger</title>
+    <link rel="stylesheet" href="frog.css">
+</head>
+<body>
+    <div id="container">
+        <canvas id="canvas"></canvas>
+    </div>
+    
+    <script>
+
+const canvas = document.getElementById("canvas");
+const context = canvas.getContext("2d");
+canvas.width = 676;
+canvas.height = 676;
+let Speed = 1;
+let score = 0;
+let lives = 3;
+let autoArray =[];
+let ShieldArray =[];
+let LoggArray =[];
+
+
+class Player {
+    constructor(playX, playY, movementSpeedX, movementSpeedY, playWidth, playHeight){
+        this.x = playX;
+        this.y = playY;
+        this.movementSpeedX = movementSpeedX;
+        this.movementSpeedY = movementSpeedY;
+        this.width = playWidth;
+        this.height = playHeight;
+    }
+
+    moveUp(){
+        this.y = this.y - this.movementSpeedY;
+    }
+    moveDown(){
+        this.y = this.y + this.movementSpeedY;
+    }
+    moveLeft(){
+        this.x = this.x - this.movementSpeedX;
+
+    }
+    moveRight(){
+        this.x = this.x + this.movementSpeedX;
+    }
+
+    update(){
+        if(this.y < 0) scoredUp();
+
+    }
+    draw(){
+        context.beginPath();
+        context.rect(this.x, this.y, 52, 52);
+        context.fillStyle = '#C1F276';
+        context.fill();
+
+    }
+
+}
+var player = new Player(312, 624, 52, 52, 52, 52);
+
+class autoClass {
+    constructor(autoX, autoY, autoWidth, autoHeight, autoSpeed) {
+        this.x = autoX;
+        this.y = autoY;
+        this.width = autoWidth;
+        this.height = autoHeight;
+        this.speed = autoSpeed;
+    }
+    autoDraw(){
+        context.fillStyle = '#595959';
+        context.fillRect(this.x, this.y, this.width, this.height);
+        
+    }
+    collisionCar(player){
+        if(((this.x + this.width) >= player.x) && 
+        (this.x <= (player.x + player.width)) &&
+        ((this.y + this.height - 1) >= player.y) &&
+        (this.y <= (player.y + player.height - 1))){
+            console.log('hit');
+            deathLiveCount();
+        }        
+    }
+    autoUpdate(){
+        this.x += this.speed * Speed;
+        if(this.speed > 0){
+            if(this.x > canvas.width + this.width){
+            this.x = 0 - this.width;
+            }
+        }else{
+            if(this.x < 0 - this.width){
+                this.x = canvas.width + this.width;
+            }
+        }
+    }
+        
+
+}
+class Logg {
+    constructor(autoX, autoY, autoWidth, autoHeight, autoSpeed) {
+        this.x = autoX;
+        this.y = autoY;
+        this.width = autoWidth;
+        this.height = autoHeight;
+        this.speed = autoSpeed;
+    }
+    LoggDraw(){
+        context.fillStyle = '#6E2C00';
+        context.fillRect(this.x, this.y, this.width, this.height);
+        
+    }
+    LoggUpd(){
+        this.x += this.speed * Speed;
+        if(this.speed > 0){
+            if(this.x > canvas.width + this.width){
+            this.x = 0 - this.width;
+            }
+        }else{
+            if(this.x < 0 - this.width){
+                this.x = canvas.width + this.width;
+            }
+        }
+
+        
+    }
+}
+class Shield {
+    constructor(autoX, autoY, autoWidth, autoHeight, autoSpeed) {
+        this.x = autoX;
+        this.y = autoY;
+        this.width = autoWidth;
+        this.height = autoHeight;
+        this.speed = autoSpeed;
+    }
+    ShieldDraw(){
+        context.fillStyle = '#12b039';
+        context.fillRect(this.x, this.y, this.width, this.height);
+        
+    }
+    ShieldUpd(){
+        this.x += this.speed * Speed;
+        if(this.speed > 0){
+            if(this.x > canvas.width + this.width){
+            this.x = 0 - this.width;
+            }
+        }else{
+            if(this.x < 0 - this.width){
+                this.x = canvas.width + this.width;
+            }
+        }
+
+        
+    }
+}
+
+function Obsticle(){
+    for (let i = 0; i < 4; i++){
+    let Status = i * 200
+    autoArray.push(new autoClass(Status, canvas.height - 52*2, 52*1.5, 52, -1));
+        
+    }
+    for (let i = 0; i < 2; i++){
+    let Status = i * 400
+    autoArray.push(new autoClass(Status, canvas.height - 52*3, 52*3.5, 52, 2));
+        
+    }
+    for (let i = 0; i < 3; i++){
+    let Status = i * 400
+    autoArray.push(new autoClass(Status, canvas.height - 52*4, 52*4, 52, -2));
+        
+    }
+    for (let i = 0; i < 3; i++){
+    let Status = i * 300
+    autoArray.push(new autoClass(Status, canvas.height - 52*5, 52*2, 52, 2));
+        
+    }
+    for (let i = 0; i < 4; i++){
+    let Status = i * 200
+    autoArray.push(new autoClass(Status, canvas.height - 52*6, 52*1, 52, -3.5));
+        
+    }
+    for (let i = 0; i < 3; i++){
+    let Status = i * 100
+    ShieldArray.push(new Shield(Status, canvas.height - 52*8, 52*1.5, 52, -1));
+        
+    }
+    for (let i = 0; i < 3; i++){
+    let Status = i * 200
+    LoggArray.push(new Logg(Status, canvas.height -  52*9, 52*3, 52, 1.5));
+        
+    }
+    for (let i = 0; i < 3; i++){
+    let Status = i * 200
+    LoggArray.push(new Logg(Status, canvas.height - 52*10, 52*3, 52, -1.5));
+        
+    }
+    for (let i = 0; i < 3; i++){
+    let Status = i * 100
+    ShieldArray.push(new Shield(Status, canvas.height - 52*11, 52*1.5, 52, 1));
+        
+    }
+    for (let i = 0; i < 3; i++){
+    let status = i * 200
+    LoggArray.push(new Logg(status, canvas.height - 52*12, 52*3, 52, -1.5));
+        
+    }
+
+    
+}
+
+Obsticle();
+
+function ObsDraw() {
+    for (let i = 0; i < autoArray.length; i++) {
+        autoArray[i].autoUpdate();
+        autoArray[i].autoDraw();
+        autoArray[i].collisionCar(player);
+    }
+    for (let i = 0; i < LoggArray.length; i++) {
+        LoggArray[i].LoggUpd();
+        LoggArray[i].LoggDraw();
+    }
+    for (let i = 0; i < ShieldArray.length; i++) {
+        ShieldArray[i].ShieldUpd();
+        ShieldArray[i].ShieldDraw();
+    }
+
+}
+
+
+
+
+function updateScreen(){
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+
+ObsDraw();
+scoredDraw();
+livesDraw();
+player.update();
+player.draw();
+
+    window.requestAnimationFrame(updateScreen);        
+}
+window.requestAnimationFrame(updateScreen);
+
+
+
+
+
+
+
+window.addEventListener('keydown', function(event){
+switch(event.keyCode){
+    case 38:
+        player.moveUp();
+        break;
+    case 37: 
+        player.moveLeft();
+        break;
+    case 40: 
+        player.moveDown();
+        break;
+    case 39:
+        player.moveRight();
+        break;
+}
+});
+window.addEventListener('keydown', function(event){
+
+switch(event.keyCode){
+    case 87:
+        player.moveUp();
+        break;
+    case 65: 
+        player.moveLeft();
+        break;
+    case 83: 
+        player.moveDown();
+        break;
+    case 68:
+        player.moveRight();
+        break;
+}
+});
+
+function scoredUp() {
+    score += 10;
+    Speed += 0.05;
+    player.x = 312;
+    player.y = 624;
+}
+function scoredDraw() {
+    context.fillStyle = 'black';
+    context.strokeStyle = 'black';
+    context.font = '17px serif ';
+    context.strokeText('Score:', 22, 20);
+    context.font = '22px serif';
+    context.fillText(score, 72, 22);
+}
+
+
+function deathLiveCount() {
+    lives -= 1;
+    player.x = 312;
+    player.y = 624;
+    zeroLives();
+}
+function zeroLives() {
+    if(lives == 0) {
+    alert('Your score' + ' ' + score);
+    player.x = 312;
+    player.y = 624;
+    lives = 3;
+    score = 0;
+    Speed = 1;
+    }
+}
+function livesDraw() {
+    context.fillStyle = 'black';
+    context.strokeStyle = 'black';
+    context.font = '17px serif ';
+    context.strokeText('Lives:', 22, 40)
+    context.font = '22px serif';
+    context.fillText(lives, 72, 42)
+}
+
+    </script>
+</body>

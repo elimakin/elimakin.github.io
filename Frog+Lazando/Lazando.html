@@ -1,0 +1,977 @@
+<html>
+    <head>
+        <style>
+            .body{
+                margin:0;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            }
+            .item{
+                padding:10px;
+                font-family:Arial, Helvetica, sans-serif;
+                /*border: 1px solid gray;*/
+                flex-basis: 30%;
+                padding:0;
+                flex-direction: column;
+                /*flex-wrap: wrap;*/
+                float: left;
+                
+
+            }
+
+            .item2{
+
+                border:1px solid black;
+                background-color:#BD141B;
+                width: 100%;
+                height: 300px;
+                
+            }
+
+
+
+            .book_container {
+               flex-direction: row;
+               display: flex;
+               justify-content: space-evenly;
+               position:relative;
+               
+           
+                
+                
+            }
+           
+
+            img{
+                width:300px;
+                height: 450px;
+                /*float: none;*/
+                /*flex-basis: 20%;*/
+                
+
+            }
+
+            
+            .dropdownmenu{
+                
+                text-align: center;
+                padding: 15px;
+                padding-left:35px;
+                padding-right:35px;
+                text-align: center;
+                margin-top:0;
+                margin-right:auto;
+                margin-bottom:0;
+                margin-left:auto;
+
+            }
+
+            .header{
+                font-size: 65px;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                color: seashell;
+                text-align: center;
+                
+            }
+
+            .text-block {
+               position: absolute;
+               bottom: 20px;
+               right: 20px;
+               background-color: #BD141B;
+               color: white;
+               padding-left: 10px;
+               padding-right: 15px;
+            }
+
+        
+           .headerm {
+            position: relative;
+            background-color:white;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 1px;
+            margin-bottom: 1px;
+            margin-left: 15%;
+            margin-right: 15%;
+            padding-bottom: 1px;
+            box-shadow:0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19) ;
+            }
+            .logo{
+                width: 50px;
+                height: 50px;
+            }
+            .title{
+                position: relative;
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
+
+            button {
+                position: relative;
+                background-color: rgb(233, 233, 233);
+                border: 2px solid rgb(197, 197, 197);
+                border-radius: 15px;
+                color: rgb(163, 163, 163);
+                padding: 5px 20px;
+                text-align: center;
+                text-decoration: none;
+            }
+            button:hover{
+                background-color: white;
+                color: rgb(255, 188, 43);
+                border-color: rgb(255, 188, 43);
+            }
+
+            .search{
+                position: relative;
+                background-color: white;
+                border: 2px solid rgb(197, 197, 197);
+                padding: 5px 20px;
+                text-align: center;
+                text-decoration: none;
+                font-size: 15px;
+            
+            }
+
+            .account{
+                position: absolute;
+                top: 0px;
+                right: 10px;
+                margin-top: 10px;
+
+            }
+            .flex {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                }
+            .menu{
+                margin-top: 30px;
+                display: flex;
+                justify-content: space-around;
+            }
+            .menu button{
+                position: relative;
+                background-color: rgb(233, 233, 233);
+                border: 2px solid rgb(197, 197, 197);
+                border-radius: 15px;
+                color: rgb(163, 163, 163);
+                padding: 5px 55px;
+                text-align: center;
+                text-decoration: none;
+            }
+            .menu button:hover{
+                background-color: white;
+                color: rgb(255, 188, 43);
+                border-color: rgb(255, 188, 43);
+            }
+
+            .mainmenu{
+
+                position: relative;
+                text-align: center;
+                padding:45px;
+
+            }
+            .dropdownmenu:hover {
+                background-color:white;
+                border-color: rgb(255, 188, 43);
+            }
+            .prod_box {  
+                position: absolute;
+                left: 60px;
+                top: 200px;
+                height: 600px;
+                width: 250px;
+                border: 1px solid black;
+                font: outline;
+                font-size: 25px;
+                background-color: rgb(226, 223, 223) ; 
+                border-radius: 20px;
+                box-shadow: 5px 10px rgb(194, 194, 194);
+                }
+
+            .prod_title{
+                padding: 10px;
+                padding-left: 25px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-style: inherit;
+            }
+            .prod_container{
+                border-top: solid black;
+                display: flex;
+                flex-direction: column;
+             }
+            
+            
+            .products{
+                padding-top: 40px;
+                padding-left: 25px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-style: inherit;
+                text-decoration: underline;
+            }
+            .products :hover{
+                color: rgb(231, 73, 73);
+            }
+            #empty{
+                position: fixed;
+                left: 600px;
+                top: 200px;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                font-size: 40px;
+                display: flex;
+                flex-flow: column;
+            }
+            .price_box{
+                position: absolute;
+                left: 1500px;
+                top: 200px;
+                width: 300px;
+                height: 400px;
+                border: 1px solid black;
+                font-size: 25px;
+                background-color: rgb(226, 223, 223) ; 
+                border-radius: 20px;
+                box-shadow: 5px 10px rgb(194, 194, 194);
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            .space{
+                padding: auto;
+            }
+            .Accept_container{
+                position: absolute;
+                left: 1500px;
+                top: 700px;
+
+            }
+            .Accept_text{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 25px;
+            }
+            #Accept{
+                width: 100%;
+                height: 140px;
+            }
+          
+            .Salebanner{
+            color: purple;
+            display: flex;
+            padding-top: 60px;
+            justify-content: center;
+            font-size: 35px;
+        }
+        
+         .search_button{
+             border: 2px solid rgb(197, 197, 197);
+             width: 50px;
+             color:  rgb(163, 163, 163);
+             }
+             .search_button:hover{
+            background-color: white;
+            color: rgb(255, 188, 43);
+            border-color: rgb(255, 188, 43);
+             }
+            #item_image{
+                padding-left: 80px;
+                padding-top: 40px;
+                width: 270px;
+            }
+            .product_title{
+                position: absolute;
+                top: 250px;
+                left: 500px;
+                font-size: 35px;
+                color: #18515E;
+            }
+            .italic{
+                position: absolute;
+                top: 310px;
+                left:500px;
+                font-size: 20px;
+                font-style: italic;
+            }
+            #stars{
+                position: absolute;
+                left: 500px;
+                top: 400;
+                height: 44px;
+                width: 200px;
+            
+            }
+            .reviews{
+                position: absolute;
+                top: 430px;
+                left: 700px;
+            }
+            
+            .Best_seller{
+                position: absolute;
+                left: 500px;
+                top: 500px;
+                border: 2px solid yellow;
+                background-color: yellow;
+                font-size: 20px;
+                border-radius: 5px;
+            }
+
+                .dropbtn{
+                color: black;
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
+            }
+            .dropdown{
+                position: relative;
+                display: inline-block;
+            }
+            .dropdown_content{
+                display: none;
+                position: absolute;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+                background-color: white;
+            }
+            .dropdown_content a{
+                color: black;
+                display: block;
+                padding: 12px 16px;
+            }
+            .dropdown_content a :hover {background-color: rgb(138, 138, 138);}
+            
+            .dropdown:hover .dropdown_content{      
+                display: block;
+            }
+            .dropdown:hover .dropbtn {
+              background-color: #949494;
+            }
+            
+            .Cart{
+                font-size: 20px;
+                border-radius: 10px;
+                width: 120px;
+            }
+            .Cart :hover{
+            color: rgb(151, 5, 5);
+        
+            }
+            .pric_box{
+            position: absolute;
+            top: 550px;
+            left: 1000px;
+            font-size: 22px;
+            }
+            .text_box{
+                display: flex;
+            }
+            .red_txt{
+                color: red;
+                padding-top: 20px;
+            }
+            .overlined{
+                padding-top: 20px;
+                padding-left: 20px;
+                text-decoration: line-through;
+                color: grey;
+            }
+            #truck{
+                width: 50px;
+                padding-top: 20px;
+                height: 70px;
+            }
+            .delivery_box{
+                position: absolute;
+                top: 600px;
+                left: 1000px;
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .delivery_txt_bold{
+                font-weight: bolder;
+                font-size: 20px;
+                padding-top: 70px;
+                padding-left: 10px;
+            }
+            .delivery_txt{
+                font-size: 20px;
+                position: absolute;
+                top: 750px;
+                left: 1000px;
+            }
+            .desc{
+                position: absolute;
+                top: 900px;
+                left: 500px;
+                width: 700px;
+                font-size: 20px;
+                color: rgb(75, 75, 75);
+            }
+            .About{
+                font-size: 30px;
+                position: absolute;
+                left: 200px;
+                top: 950px;
+            }
+            .About_table{
+                position: absolute;
+                top: 1100px;
+                left: 350px;
+                font-size: 25px;
+            }
+            .bold_txt{
+                font-size: 20px;
+                font-weight: bold;
+                padding-top: 20px;
+            }
+            .prod_txt{
+                font-size: 20px;
+                padding-top: 20px;
+            }
+            .bold_container{
+                display: flex;
+                flex-direction: column;
+            }
+            .bold_container_2{
+                display: flex;
+                flex-direction: column;
+                border-left: solid grey;
+                padding-left: 20px;
+            }
+            .txt_container{
+                display: flex;
+                flex-direction: column;
+                padding-left: 70px;
+                padding-right: 70px; 
+            }
+            .Customers{
+                position: absolute;
+                top: 1300px;
+                left: 200px;
+                font-weight: bold;
+                color: blue;
+                font-size: 40px;
+            }
+            .book_conteiner{
+                position: absolute;
+                top: 1400px;
+                display: flex;
+                justify-content: space-around;
+                width: 1800px;
+                
+            }
+            #book{
+                width: 200px;
+                height: 300px;
+                padding: 10px;
+            }
+            .info{
+                width: 200px;
+                font-size: 20px;
+                padding: 10px;
+            }
+            .red_txt_2{
+                color: red;
+                font-size: 25px;
+                padding-left: 65px;
+            }
+            .individual_book{
+                border: 1px solid rgb(209, 209, 209);
+                background-color: rgb(209, 209, 209);
+                border-top-right-radius: 20px;
+                border-top-left-radius: 20px;
+            }
+            .Add_cart{
+                position: absolute;
+                left: 1000px;
+                top: 400px;
+                width: 165px;
+                background-color: green;
+                border-color:green;
+            }
+            #larger{
+                height: 500px;
+                width: 320px;
+            }
+            .itemTag{
+                display: flex;
+                flex-wrap: wrap;
+                height: 300px;
+                background-color: grey;
+                width: 650px;
+                border-radius:20px ;
+                 }
+                 #prod_pic{
+                     height: 300px;
+                 }
+                 #card_text{
+                     font-size: 30px;
+                     padding: 0%;
+                     height: 30px;
+                 }
+                 .prices{
+                     font-size: 40px;
+                     display: flex;
+                     position: fixed;
+                     left: 300px;    
+                     top: 100px;             
+                     }
+                 .red_price{
+                     color: red;
+                     text-decoration: line-through;
+                     padding-left: 20px;
+                 }
+                 #quantity{
+                     height: 40px;
+                     border-radius: 5px;
+                     font-size: 30px;
+                     position: fixed;
+                     left: 500px;
+                     top: 200px;
+                 }
+                 .ammount{
+                     position: fixed;
+                     top: 200px;
+                     left: 300px;
+                     font-size: 30px;
+                 }
+    </style>
+    </head>
+    <body>
+        
+        <div class="headerm">
+            <div class="flex">
+                    <div class="item"><img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSixFQB4WSgKYreYMSJyHuRxSBa1JrYeG-9gg&usqp=CAU"></div>
+                    <div class="item"><h1 class="title">Lazando</h1></div>
+            </div>
+        
+            <div class="account">
+                <button>Account</button>
+                <button onclick="showPage('shoppingcart')"><a>Shopping cart</a></button>
+            </div>
+
+        <div class="menu">
+                <button onclick="showPage('products')">Products</button>
+                <button>Sales</button>
+                <button><a>Home</a></button>
+                <button>Terms of Service</button>
+                <input class="search" type="text" name="Search" placeholder="Search">
+        </div>
+       </div>
+
+       <div id="container">
+
+        <div class="mainmenu">
+            <label for="books"></label>
+
+
+            <select name="CategoriesBooks" id="Dropdownmenu" class="dropdownmenu">
+            <option value="a">Weight</option>
+            <option value="b">50g - 100g</option>
+            <option value="c">100g - 500g</option>
+            <option value="d">500g+</option>
+            </select>
+
+            <select name="CategoriesBooks" id="Dropdownmenu" class="dropdownmenu">
+                <option value="a">Pages</option>
+            <option value="b">100 - 200</option>
+            <option value="c">200 - 500</option>
+            <option value="d">500+</option>
+            </select>
+
+            <select name="CategoriesBooks" id="Dropdownmenu" class="dropdownmenu">
+                <option value="a">Author</option>
+                <option value="b">A - G</option>
+                <option value="c">G - P</option>
+                <option value="d">Q - Z</option>
+            </select>
+        
+            <select name="CategoriesBooks" id="Dropdownmenu" class="dropdownmenu">
+                <option value="a">Theme</option>
+                <option value="b">Classics</option>
+                <option value="c">Biography</option>
+                <option value="d">History</option>
+            </select>
+    
+            <select name="CategoriesBooks" id="Dropdownmenu" class="dropdownmenu">
+                <option value="a">Type</option>
+                <option value="b">Hardcover</option>
+                <option value="c">Parperback</option>
+                <option value="d">E-book</option>
+            </select>
+    
+            <select name="CategoriesBooks" id="Dropdownmenu" class="dropdownmenu">
+                <option value="a">Deals</option>
+                <option value="b">-10%</option>
+                <option value="c">-20%</option>
+                <option value="d">-50%</option>
+            </select>
+
+            <select name="CategoriesBooks" id="Dropdownmenu" class="dropdownmenu">
+                <option value="a">New Arrivals</option>
+                <option value="b">This week</option>
+                <option value="c">This month</option>
+                <option value="d">This year</option>
+            </select>
+        
+            <select name="CategoriesBooks" id="Dropdownmenu" class="dropdownmenu">
+                <option value="a">Recommendation</option>
+                <option value="b">Christmas</option>
+                <option value="c">Birthday</option>
+                <option value="d">Father's Day</option>
+            </select>
+        
+            <select name="CategoriesBooks" id="Dropdownmenu" class="dropdownmenu">
+                <option value="a">Condition</option>
+                <option value="b">New</option>
+                <option value="c">Used</option>
+                <option value="d">PREMIUM</option>
+            </select>
+
+
+            </div>
+    
+            <div class="book_container">
+        
+            <div class="item">
+                <p>sponsored</p>
+                <input type="image" src="Images\LOTR.jpg" onclick="showPage('details')">
+                <div class="text-block">
+                    <h4>-10%</h4>
+                </div>
+                    <div>
+                    <p>Collector's Edition
+                    <br>
+                        Lord of the Rings - Tolkien
+                    <br>
+                    
+                       €100
+                    <br>
+                    </p>      
+                    </div>
+            </div>
+            
+            <div class="item">
+                <p>sponsored</p>
+                <input type="image" src="Images\dq.jpg" onclick="showPage('details')">
+                <div>
+                    <p>Oxford World's Classics
+                        <br>
+                        Don Quixote - Miguel de Cervantes
+                        <br>
+                    
+                        €6.99
+                     <br>
+                    </p>         
+                </div>
+            </div>
+                
+                    
+            <div class="item">
+                <p>sponsored</p>
+                <input type="image" src="Images\GGC.jpg" onclick="showPage('details')">
+                <div>
+                    <p>Oxford World's Classics
+                        <br>
+                        One Hundred Years of Solitude - Gabriel Garcia Marquez
+                        <br>
+                    
+                        €30.54
+                     <br></p>       
+                </div>
+            </div>
+
+            <div class="item">
+                <p>sponsored</p>
+                
+                <input type="image" src="Images\ili.jpg" id="larger" onclick="showPage('details')">
+                <div class="text-block">
+                    <h4>-10%</h4>
+                </div>
+                    <div>
+                        <p>Deckle Edge
+                            <br>
+                            The Illiad & The Odyssey - Homer
+                            <br>
+                    
+                            €90
+                         <br>
+                        </p>       
+                    </div>
+            </div>
+                
+            <div class="item">
+                <p>sponsored</p>
+                <input type="image" src="Images\the count of monte cristo.jpg" onclick="showPage('details')">
+                <div class="text-block">
+                    <h4>-10%</h4>
+                </div>
+                <div>
+                    <p>Everyman's Library
+                        <br>
+                        The Count of Monte Cristo - Alexandre Dumas
+                        <br>
+                    
+                        €15.99
+                     <br>
+                    </p>        
+                </div>
+                </div>
+            </div>
+            
+            <div class="item2">
+                
+                
+                <div>
+                    <p>
+                        <h1 class="header">   Classic Christmas Offers</h1>
+                    
+                    </p>        
+                </div>
+            </div>
+
+            <div class="book_container">
+
+            <div class="item">
+                <p><br></p>
+                <input type="image" src="Images\US.jpg" onclick="showPage('details')">
+                
+                <div>
+                    <p>Modern Classics
+                        <br>
+                        Unknown Soldier - Vainno Linna
+                        <br>
+                    
+                        €11.31
+                        <br>
+                    </p>       
+                </div>
+                </div>
+            
+
+            <div class="item">
+                <p><br></p>
+                <input type="image" src="Images\edgar.jpg" onclick="showPage('details')">
+                <div>
+                    <p>Selected Essays
+                        <br>
+                        Complete Tales and Poems - E. Allan Poe
+                        <br>
+                    
+                        €14.99
+                      <br>
+                    </p>        
+                </div>
+                </div>
+            
+
+            <div class="item">
+                <p><br></p>
+                <input type="image" src="Images\Orange.jpg" onclick="showPage('details')">
+                <div>
+                    <p>Oxford World's Classics
+                        <br>
+                        A Clockwork Orange - Anthony Burgess
+                        <br>
+                    
+                        €10.99
+                     <br>
+                    </p>        
+                </div>
+                </div>
+            
+
+            <div class="item">
+                <p><br></p>
+                <input type="image" src="Images\41ACWHUdp3L._SX320_BO1,204,203,200_.jpg" onclick="showPage('details')">
+                <div>
+                    <p>Penguin Classics
+                        <br>
+                        Selected Poems - Lord Byron
+                        <br>
+                    
+                        €100
+                     <br>
+                    </p>        
+                </div>
+                </div>
+            
+
+            <div class="item">
+                <p> <br></p>
+                <input type="image" src="Images\niet.jpg" onclick="showPage('details')">
+                <div>
+                    <p>L&PM Pocket
+                        <br>
+                        Ecce Homo - F. Nietzsche
+                        <br>
+                    
+                        €6,99
+                     <br>
+                    </p>      
+                </div>
+                </div>
+            </div>
+        </div>
+        
+        
+
+        </div>
+    </div>
+    </body>
+    <script>
+        
+        const shoppingcart = `            
+                <div class="prod_box">                
+                <div class="prod_title">Products</div>
+                <div class="prod_container">
+                <div class="products"> <a>Sci-Fi</a></div>
+                <div class="products"> <a>Poetry</a></div>
+                <div class="products"> <a>Fiction</a></div>
+                <div class="products"> <a>Novels</a></div>
+                <div class="products"> <a>Sciance</a></div>
+                <div class="products"> <a>For Kids</a></div></div>
+            </div>
+            <div id='empty'>Your shopping cart is empty</div>
+            
+            </div>
+            
+            <table class="price_box">
+                <tbody id="space"> 
+                    <tr>
+                    <th>Total:</th>
+                </tr>
+                <tr>
+                    <td>Net price:</td>
+                    <td>asdasd</td>
+                </tr>
+                <tr>
+                    <td>Shipping:</td>
+                    <td>asdasd</td>
+                </tr>
+                <tr>
+                    <td>Net price:</td>
+                    <td>asdasd</td>
+                </tr>
+                <tr>
+                    <td>Final price:</td>
+                    <td>asdasd</td>
+                </tr>
+            </tbody>
+             </table>
+              <div class="Accept_container">
+                    <div class=Accept_text>We Accept:</div>
+                    <img id="Accept"src="https://parisbloom.com/wp-content/themes/woodmart-child/images/payment-methods-secure.png">
+                 </div>
+            
+      </div> `;
+
+      const details =`
+      <div class="Salebanner">HURRY WHILE THE STOCK LASTS!</div>
+     <div class="info_container">
+         <div class="prod_image"><img id="item_image"src="https://images-na.ssl-images-amazon.com/images/I/41ACWHUdp3L._SX320_BO1,204,203,200_.jpg"></div>
+    <div class="prod_container">
+        <div class="product_title">Selected Poems - Penguin Classics</div>
+        <div class="italic">By Lord George Gordon Byron</div>
+        <div ><img id="stars"src="https://img.pngio.com/filestar-rating-45-of-5png-wikimedia-commons-rating-png-1010_215.png"></div>
+        <div class ="reviews">20 500 Reviews</div>
+        <div class="Best_seller">#1 Best Seller</div>
+        
+    </div>
+    <button class='Add_Cart' onClick='AddToCart()'>
+            <div ><a >Add To Cart</a></div>
+        </button>
+        <div class="pric_box">Price:
+            <div class="text_box">
+                <div class="red_txt">e90,00</div>
+                <div class="overlined">e100,00</div>
+            </div>
+        </div>
+        <div class="delivery_box"><img id="truck"src="https://img.icons8.com/ios/452/truck.png">
+            <div class="delivery_txt_bold">Free Delivey</div>
+            <div class="delivery_txt">on e200,00+ orders. Arrives by Thur, Dec 31st</div>
+            </div>
+        <div class="delivery_txt">Pickup not avaliable</div>
+        </div>
+  <div class="desc">Described as 'Mad, bad and dangerous to know' by one of his lovers, Lady Caroline Lamb, Lord Byron was the quintessential Romantic. Flamboyant, charismatic and brilliant, he remains almost as notorious for his life - as a political revolutionary, sexual adventurer and traveller - as he does for his literary work.</div>   
+  <div class="About">About this Book:</div>
+  <table class="About_table">
+    <tr>
+        <th>Format:</th>
+        <td>Paperback | 880 pages</td>
+        <th>Publication City/Country:</th>
+        <td>London, United Kingdom</td>
+    </tr>
+    <tr>
+        <th>Dimenssions:</th>
+        <td>129 x 198 x 37 mm | 596g</td>
+        <th>Language:</th>
+        <td>English</td>
+    </tr>
+    <tr>
+        <th>Publication date:</th>
+        <td>25th Apr 2006</td>
+        <th>ISBN10:</th>
+        <td>0140424504</td>
+    </tr>
+    <tr>
+        <th>Publisher:</th>
+        <td>Penguin Classics</td>
+        <th>ISBN13:</th>
+        <td>9780140424508</td>
+    </tr>
+    <tr>
+        <th>Imprint:</th>
+        <td>PENGUIN CLASSICS</td>
+        <th>Bestsellers rank:</th>
+        <td>147,958</td>
+    </tr>
+     </table>
+ </div>
+ <div class="Customers"> Customers also bought: </a> </div>
+ <div class="book_conteiner">
+     <div class="individual_book"><img id="book"src="data:image/webp;base64,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">
+        <div class="book_txt">
+            <div class="info">Vintage Classics War and Peace - Leo Tolstoy</div>
+        </div>
+        <div class="red_txt_2">€10,40</div>  
+    </div>
+    <div class="individual_book"><img id="book"src="data:image/webp;base64,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">
+        <div class="book_txt">
+            <div class="info">Oxford World's Classics Ecce Homo - Friedrich Nietzsche</div>
+            <div class="red_txt_2">€13,95</div>  
+        </div>
+    </div>
+    <div class="individual_book"><img id="book"src="https://m.media-amazon.com/images/I/41gqJ6z++uL._SY346_.jpg">
+        <div class="book_txt">
+            <div class="info">Classic Masterpieces The Lord of the Rings- J.R.R Tolkien</div>
+        </div> 
+        <div class="red_txt_2">€100,00</div>  
+    </div>
+ </div>`;
+    
+
+      
+      
+      function showPage(page){
+          
+        const target = document.querySelector('#container');
+          switch (page) {
+              case'shoppingcart':
+               target.innerHTML = shoppingcart;
+              break;
+              case'details':
+              target.innerHTML = details;
+              break;
+          }
+        
+        };
+        function AddToCart(){
+            alert('I was not able to do the tasks, I am sorry :C no excuses, I ran out of time and effort');
+
+        };
+
+    
+    </script>
+ 
+
+</html>
